@@ -1,0 +1,188 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اسکای وب</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/css">
+
+    <style>
+        body {
+            background-color: rgb(185, 179, 179);
+            direction: rtl;
+        }
+
+        .login-dark {
+            height: 667px;
+            background: #eee8e8 url(../../assets/img/star-sky.jpg);
+            background-size: cover;
+            position: relative;
+        }
+
+        .login-dark form {
+            max-width: 320px;
+            width: 90%;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 4px;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            color: rgb(0, 0, 0);
+            box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-dark .illustration {
+            text-align: center;
+            padding: 15px 0 20px;
+            font-size: 100px;
+            color: #20a52b;
+        }
+
+        .login-dark form .form-control {
+            background: none;
+            border: none;
+            border-bottom: 1px solid #11519b;
+            border-radius: 0;
+            box-shadow: none;
+            outline: none;
+            color: inherit;
+        }
+
+        .login-dark form .btn-primary {
+            background: #549739;
+            border: none;
+            border-radius: 4px;
+            padding: 11px;
+            box-shadow: none;
+            margin-top: 26px;
+            text-shadow: none;
+            outline: none;
+        }
+
+        .login-dark form .btn-primary:hover,
+        .login-dark form .btn-primary:active {
+            background: #08581c;
+            outline: none;
+        }
+
+        .login-dark form .forgot {
+            display: block;
+            text-align: center;
+            font-size: 12px;
+            color: #6f7a85;
+            opacity: 0.9;
+            text-decoration: none;
+        }
+
+        .login-dark form .forgot:hover,
+        .login-dark form .forgot:active {
+            opacity: 1;
+            text-decoration: none;
+        }
+
+        .login-dark form .btn-primary:active {
+            transform: translateY(1px);
+        }
+    </style>
+    <style>
+        .megamenu {
+            position: static
+        }
+
+        .megamenu .dropdown-menu {
+            background: none;
+            border: none;
+            width: 100%
+        }
+
+        body {
+            /* background: #eaafc8; */
+            /* background: -webkit-linear-gradient(to right, #eaafc8, #654ea3); */
+            /* background: linear-gradient(to right, #eaafc8, #654ea3); */
+            min-height: 100vh
+        }
+
+        code {
+            color: #745eb1;
+            background: #fff;
+            padding: 0.1rem 0.2rem;
+            border-radius: 0.2rem
+        }
+
+        .text-uppercase {
+            letter-spacing: 0.08em
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-expand-sm navbar-expand navbar-light bg-white py-3 shadow-sm">
+         <!-- <a href="#" class="navbar-brand font-weight-bold d-block d-lg-none">MegaMenu</a> -->
+             <button type="button"
+            data-toggle="collapse" data-target="#navbarContent" aria-controls="navbars" aria-expanded="false"
+            aria-label="Toggle navigation" class="navbar-toggler"> <span class="navbar-toggler-icon"></span> </button>
+        <div id="navbarContent" class="collapse navbar-collapse">
+            <ul class="navbar-nav mx-auto">
+                
+                <li style="font-size: smaller;" class="nav-item"><a href="" class="nav-link font-weight-bold text-uppercase">درباره ما</a></li>
+                <li style="font-size: large;background-color: #549739;" class="nav-item rounded"><a href="" class="nav-link font-weight-bold text-uppercase">اسکای وب</a></li>
+                <li style="font-size: smaller;" class="nav-item"><a href="{{url_for('admin.login')}}" class="nav-link font-weight-bold text-uppercase">ورود مدیر</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="login-dark">
+        <form action="{{url_for('users.login')}}" method="POST">
+            {{ form.hidden_tag()}}
+            {% with messages = get_flashed_messages(True) %}
+            {% if messages %}
+            <div class="row">
+                {% for message in messages %}
+                <div class="card {{message[0]}} text-white">
+                    <div class="card-body">
+                        {{ message[1] }}
+                    </div>
+                </div>
+                {% endfor %}
+        
+            </div>
+            {% endif %}
+            {% endwith %}
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group"><input class="form-control" type="text" name="username" placeholder="نام کاربری"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="رمز عبور">
+            </div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">ورود</button></div>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+</body>
+
+</html>

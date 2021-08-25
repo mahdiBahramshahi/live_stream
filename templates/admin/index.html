@@ -1,0 +1,302 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ادمین</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+    <style>
+        body {
+            background: rgb(185, 179, 179);
+            font-family: Arial, Helvetica, sans-serif;
+            direction: rtl;
+        }
+
+        .banner {
+            background: #a770ef;
+            background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+            background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+        }
+
+        /* body {
+            font-family: Arial, Helvetica, sans-serif;
+        } */
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        /* Center the image and position the close button */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+            padding-top: 60px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto;
+            /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="px-lg-5">
+            {% with messages = get_flashed_messages(True) %}
+            {% if messages %}
+            <div class="row">
+                {% for message in messages %}
+                <div class="card {{message[0]}} text-white">
+                    <div class="card-body">
+                        {{ message[1] }}
+                    </div>
+                </div>
+                {% endfor %}
+        
+            </div>
+            {% endif %}
+            {% endwith %}
+
+            <!-- For demo purpose -->
+            <div class="row py-5">
+                <div style="direction: rtl;" class="col-lg-12 mx-auto">
+                    <div style="float: right;" class="text-white p-5 shadow-sm rounded banner col-sm-12">
+                        <center>
+                            <div class="col-xl-3 col-lg-4 col-md-4 mb-4 col-sm-6">
+                                <div class="bg-white rounded shadow-sm"><img
+                                        src="https://res.cloudinary.com/mhmd/image/upload/v1556294927/cody-davis-253928-unsplash_vfcdcl.jpg"
+                                        alt="" class="img-fluid card-img-top">
+
+
+
+
+
+                                        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">افزودن کاربر</button>
+
+                                        <div id="id01" class="modal">
+                                          
+                                          <form class="modal-content animate" action="{{url_for('admin.register')}}" method="POST">
+
+                                            <div class="container">
+                                                <div style="float: right;" class="col-6 col-sm-6">
+                                                    <label for="showname" style=" float: right;" ><b style="color: #000;">نام نمایشی:</b></label>
+                                                    <input type="text" placeholder="نام نمایشی" name="showname" required>
+                                              
+      
+                                                    <label for="password" style=" float: right;" ><b style="color: #000;">رمز ورود:</b></label>
+                                                    <input type="password" placeholder="رمز ورود" name="password" required>
+      
+
+                                                    <label for="role" style=" float: right;" ><b style="color: #000;">نقش کاربر:</b></label>
+                                                    <!-- <input type="text" placeholder="دسته بندی" name="mahsol_category" required> -->
+                                                    <select name="role" class="form-control" >
+                                                      <option value="0" > کاربر </option>
+                                                      <option value="1" > مدیر </option>
+                                                      </select>
+                                                </div>
+                                                <div style="float: right;" class="col-6 col-sm-6">
+                                                    <label for="username" style=" float: right;" ><b style="color: #000;">نام کاربری:</b></label>
+                                                    <input type="text" placeholder="نام کاربری" name="username" required>
+      
+                                                    <label for="confirm_password" style=" float: right;" ><b style="color: #000;">تکرار رمز ورود:</b></label>
+                                                    <input type="password" placeholder="تکرار رمز ورود" name="confirm_password" required>
+      
+      
+
+      
+                                                </div>
+
+
+                                              <button type="submit">افزودن کاربر</button>
+                                            </div>
+                                        
+                                            <div class="container" style="background-color:#f1f1f1">
+                                              <center><button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">لغو</button></center>
+                                            </div>
+                                          </form>
+                                        </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <!-- End -->
+
+            <div class="row">
+                <!-- Gallery item -->
+                {% for user in all_users %}
+                <div class="col-xl-3 col-lg-4 col-md-4 mb-4 col-sm-6">
+                    <div class="bg-white rounded shadow-sm">
+                        <img src="https://sabkekar.ir/wp-content/uploads/2021/01/user.png" alt="{{user.username}}" class="img-fluid card-img-top featured__item__pic">
+                        <div class="p-4 text-right">
+                            <h5> <a href="#" class="text-dark">{{user.showname}}</a></h5>
+                            <p class="small text-muted mb-0">{{ user.username }}
+                            </p>
+                            <p class="small text-muted mb-0">{{ user.phone_number }}
+                            </p>
+                            <div
+                                class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+
+                                <div style="background-color: {{ 'green' if user.role else 'red' }};" class="badge badge-danger px-3 rounded-pill font-weight-normal">{{ 'مدیر' if user.role else 'کاربر' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            <!-- </div>
+            <div class="py-5 text-right"><a href="#" class="btn btn-dark px-5 py-3 text-uppercase">Show me more</a>
+            </div> -->
+        </div>
+    </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        </script>
+</body>
+</html>
